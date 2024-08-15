@@ -7,16 +7,16 @@ This project is a React-based web application that uses Redux for state manageme
 The application is designed to be fully responsive, providing an optimal viewing experience across a wide range of devices, including PCs, tablets, and phones. The layout adjusts seamlessly to different screen sizes, ensuring that users have a consistent and user-friendly experience, regardless of the device they are using. This is achieved using SCSS, where mixins and variables are leveraged to create breakpoints and style adjustments specific to each device type.
 
 ## Technologies Used:
-React: Front-end library for building user interfaces.
-Redux Toolkit: Simplifies state management and reduces boilerplate code in Redux.
-Redux Persist: Preserves the Redux state between page reloads.
-HashRouter: Provides routing functionality using URL hash fragments.
-TypeScript (TSX): TypeScript with JSX syntax for type-safe React components.
-SCSS: A CSS preprocessor that adds features like variables and mixins to CSS.
-Classnames: Utility for conditionally joining class names together.
-ESLint: A tool for identifying and fixing problems in JavaScript/TypeScript code.
-React Hooks: Functions that let you use state and other React features without writing a class.
-API: The project interacts with an API to fetch data.
+- React: Front-end library for building user interfaces.
+- Redux Toolkit: Simplifies state management and reduces boilerplate code in Redux.
+- Redux Persist: Preserves the Redux state between page reloads.
+- HashRouter: Provides routing functionality using URL hash fragments.
+- TypeScript (TSX): TypeScript with JSX syntax for type-safe React components.
+- SCSS: A CSS preprocessor that adds features like variables and mixins to CSS.
+- Classnames: Utility for conditionally joining class names together.
+- ESLint: A tool for identifying and fixing problems in JavaScript/TypeScript code.
+- React Hooks: Functions that let you use state and other React features without writing a class.
+- API: The project interacts with an API to fetch data.
 
 ## Steps to Clone and Run the Project:
 1) Clone the repository
