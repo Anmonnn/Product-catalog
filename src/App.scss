@@ -1,3 +1,5 @@
+@import './helpers/mixins.scss';
+
 body {
   height: 100%;
   margin: 0;
@@ -14,6 +16,15 @@ body {
   min-height: 100vh;
 }
 
+main {
+  margin: 0 24px;
+
+
+  @include onPhone {
+    margin: 0;
+  }
+}
+
 ul {
   display: flex;
   list-style: none;
@@ -21,7 +32,11 @@ ul {
   padding: 0;
 }
 
-p, h1, h2, h3, a {
+p,
+h1,
+h2,
+h3,
+a {
   margin-block: 0;
   margin-inline: 0;
   margin: 0;

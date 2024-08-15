@@ -1,11 +1,15 @@
+@import '../../helpers/mixins.scss';
+
 .Hot-prices,
 .New-models {
   margin-bottom: 20px;
 }
 
 .Home-page {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   place-items: center;
+  overflow: hidden;
 
   & h1 {
     margin-bottom: 24px;
@@ -20,10 +24,25 @@
 .Slider {
   margin: 40px 0 82px;
 
+  @include onPhone {
+    width: 100vw;
+    height: 100vw;
+    margin: 0 0 82px;
+  }
+
   &__main {
     height: 400px;
     display: flex;
     overflow: hidden;
+
+    @include onTablet {
+      height: 189px;
+    }
+
+    @include onPhone {
+      width: 100vw;
+      height: 100vw;
+    }
   }
 
   &__line-list {
@@ -46,8 +65,18 @@
   &__list {
     display: flex;
     width: 1040px;
-    height: 400px;
+    height: 100%;
     margin: 0 16px;
+
+    @include onTablet {
+      width: 490px;
+    }
+
+    @include onPhone {
+      width: 100vw;
+      height: 100vw;
+      margin: 0;
+    }
 
     & a {
       margin-right: 48px;
@@ -55,8 +84,17 @@
 
     .Slider__img {
       width: 1040px;
-      height: 400px;
+      height: 100%;
       object-fit: cover;
+
+      @include onTablet {
+        width: 490px;
+      }
+
+      @include onPhone {
+        width: 100vw;
+        height: 100vw;
+      }
     }
   }
 
@@ -66,6 +104,10 @@
     width: 32px;
     background-color: #FFF;
     border: 1px solid #B4BDC3;
+
+    @include onPhone {
+      display: none;
+    }
 
     &:hover {
       border: 1px solid #313237
@@ -80,23 +122,36 @@
 
 
 .Category {
-  height: 508px;
+  &__list {
+    display: flex;
+    gap: 16px;
+
+    @include onPhone {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
 
   &__item {
-    margin-right: 16px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-
     .Category__container {
       margin-bottom: 24px;
       height: 368px;
       width: 368px;
 
+      @include onTablet {
+        width: 187px;
+        height: 187px;
+      }
+
+      @include onPhone {
+        width: 288px;
+        height: 288px;
+      }
+
       .Category__img {
-        height: 368px;
-        width: 368px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
     }
 

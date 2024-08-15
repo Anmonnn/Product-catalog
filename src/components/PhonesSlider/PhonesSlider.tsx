@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { useAppSelector } from '../../store';
 import { TypeCard } from '../../types/TypeCard';
 import {
-  itemWidth,
   scrollPositionLeft,
   scrollPositionRight,
 } from '../../helpers/changePositionItem';
@@ -20,6 +19,8 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const phones = useAppSelector(state => state.phones.items);
+  const itemWidth = useAppSelector(state => state.phones.itemWidth) + 16;
+  const count = useAppSelector(state => state.phones.count);
 
   const findLastYear = () => {
     let lastYear = 0;
@@ -56,12 +57,7 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
   };
 
   return (
-    <div
-      className="PhonesSlider container"
-      style={{
-        width: `${4 * itemWidth - 16}px`,
-      }}
-    >
+    <div className="PhonesSlider container">
       <div className="top-container">
         <h1>{type}</h1>
 
@@ -74,7 +70,7 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
                 setScrollPosition,
                 scrollPosition,
                 itemWidth,
-                4,
+                count,
               )
             }
             className={classNames('top-container__button', {
@@ -90,17 +86,17 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
                 setScrollPosition,
                 scrollPosition,
                 itemWidth,
-                4,
+                count,
               )
             }
             disabled={
               scrollPosition - itemWidth <
-              -((phonesToDisplay(type).length - 4) * itemWidth)
+              -((phonesToDisplay(type).length - count) * itemWidth)
             }
             className={classNames('top-container__button', {
               disabled:
                 scrollPosition - itemWidth <
-                -((phonesToDisplay(type).length - 4) * itemWidth),
+                -((phonesToDisplay(type).length - count) * itemWidth),
             })}
           >
             <img src="./img/ArrowRight.png" alt="ArrowRight" />
@@ -108,7 +104,13 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
         </div>
       </div>
 
-      <div data-cy="cardsContainer" className="cardsContainer">
+      <div
+        data-cy="cardsContainer"
+        className="cardsContainer"
+        style={{
+          width: `${count * itemWidth - 16}px`,
+        }}
+      >
         <ul
           className="cardsContainer__list"
           style={{

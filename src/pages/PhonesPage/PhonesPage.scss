@@ -56,8 +56,6 @@
 .Cards__list {
   display: grid;
   margin-bottom: 40px;
-
-  grid-template-columns: repeat(4, 272px);
   gap: 40px 16px;
   justify-content: center;
 }

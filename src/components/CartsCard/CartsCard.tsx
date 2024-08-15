@@ -40,7 +40,7 @@ export const CartsCard: React.FC<T> = ({ phone }) => {
             type="button"
             onClick={() => changeCart(phone)}
           >
-            <img src="./img/Close.png" alt="Close" />
+            <img src="./img/Close.svg" alt="Close" />
           </button>
 
           <img

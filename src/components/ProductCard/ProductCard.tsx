@@ -5,7 +5,10 @@ import { useAppSelector } from '../../store';
 import { TypeCard } from '../../types/TypeCard';
 import './ProductCard.scss';
 import { useCartPhones, useFavouritesPhones } from '../../helpers/useArrays';
-import { mainUrl } from '../../helpers/changePositionItem';
+import {
+  mainUrl,
+  useItemWidthAndCount,
+} from '../../helpers/changePositionItem';
 
 interface T {
   card: TypeCard;
@@ -23,8 +26,10 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
 
   const changeFavourites = useFavouritesPhones();
 
+  const { itemCard } = useItemWidthAndCount();
+
   return (
-    <div className="card">
+    <div className="card" ref={itemCard}>
       <Link to={`/Phones/${card.phoneId}`} className="card__link">
         <img
           src={`${mainUrl}/_new/${card.image}`}
@@ -93,7 +98,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
                 className="favourites-img"
               />
             ) : (
-              <img src="./img/heart.png" alt="Heart" />
+              <img src="./img/heart.svg" alt="Heart" />
             )}
           </button>
         </div>

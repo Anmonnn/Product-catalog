@@ -1,3 +1,5 @@
+@import '../../helpers/mixins.scss';
+
 .Header {
   display: flex;
   justify-Content: space-between;
@@ -5,6 +7,11 @@
   align-items: center;
   height: 64px;
   border-bottom: 1px solid #E2E6E9;
+  overflow: hidden;
+
+  @include onTablet {
+    height: 48px;
+  }
 
   .active__line {
     background-color: #313237;
@@ -20,7 +27,6 @@
     align-items: center;
     height: 100%;
 
-
     .Logo {
       margin-right: 64px;
       margin-left: 24px;
@@ -33,16 +39,30 @@
         gap: 64px;
         display: flex;
         height: 100%;
+
+        @include onTablet {
+          gap: 32px;
+        }
+
+        @include onPhone {
+          display: none;
+        }
       }
 
       &__item {
         position: relative;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
         height: 100%;
+
+        a {
+          align-items: center;
+          height: 100%;
+          font-weight: 800;
+          text-transform: uppercase;
+        }
       }
     }
 
@@ -81,7 +101,7 @@
 
         &:focus {
           outline: none;
-      }
+        }
       }
 
       &__img {
@@ -91,8 +111,16 @@
       }
     }
 
+    .category.category-menu {
+      display: none;
+
+      @include onPhone {
+        display: flex;
+      }
+    }
+
     .category {
-      height: 64px;
+      height: 100%;
       width: 64px;
       border-left: 1px solid #E2E6E9;
       display: flex;
@@ -100,9 +128,30 @@
       align-items: center;
       position: relative;
 
-      img {
-        width: 15.34px;
-        height: 13.55px;
+      @include onTablet {
+        width: 48px;
+      }
+
+      @include onPhone {
+        display: none;
+      }
+
+      &:hover {
+        img {
+          transition: scale 0.2s ease-in-out;
+          scale: 1.5;
+        }
+
+        .circle {
+          transition: scale 0.2s ease-in-out;
+          scale: 1.5;
+        }
+      }
+
+      &-menu {
+        border: none;
+        border-left: 1px solid #E2E6E9;
+        background-color: white;
       }
 
       .circle {
@@ -127,6 +176,7 @@
 a {
   color: #89939A;
   text-decoration: none;
+  display: flex;
 
   &.active__link {
     color: #313237;

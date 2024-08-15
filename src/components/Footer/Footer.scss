@@ -1,31 +1,42 @@
+@import '../../helpers/mixins.scss';
+
 .Footer {
   display: flex;
   justify-Content: space-around;
-  flex-direction: row;
   align-items: center;
   height: 96px;
   border-top: 1px solid #E2E6E9;
   margin-top: auto;
 
+  @include onPhone {
+    flex-direction: column;
+    height: auto;
+    gap: 32px;
+    padding: 32px 16px;
+    align-items: normal;
+  }
+
   &__center {
     display: flex;
     list-style: none;
-    margin: 0;
     text-transform: uppercase;
 
     ul {
       display: flex;
+      gap: 100px;
       list-style: none;
-      margin: 0;
+
+      @include onTablet {
+        gap: 13px;
+      }
+  
+      @include onPhone {
+        flex-direction: column;
+        gap: 16px;
+      }
     }
 
     &-item {
-      margin-right: 64px;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
       a {
         color: #89939A;
         text-decoration: none;

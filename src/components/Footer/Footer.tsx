@@ -24,13 +24,19 @@ export const Footer = () => {
       <div className="Footer__center">
         <ul>
           <li className="Footer__center-item">
-            <Link to="https://github.com/Anmonnn/product-catalog">Github</Link>
+            <Link to="https://github.com/Anmonnn" target="_blank">
+              Github
+            </Link>
           </li>
           <li className="Footer__center-item">
-            <Link to="https://github.com/Anmonnn">Contacts</Link>
+            <Link to="https://github.com/Anmonnn" target="_blank">
+              Contacts
+            </Link>
           </li>
           <li className="Footer__center-item">
-            <Link to="https://github.com/Anmonnn">Rights</Link>
+            <Link to="https://github.com/Anmonnn" target="_blank">
+              Rights
+            </Link>
           </li>
         </ul>
       </div>

@@ -77,21 +77,23 @@ export const ItemCard = () => {
 
   return (
     <div className="ItemCard">
-      <div className="top-link" data-cy="breadCrumbs">
-        <Link to="/">
-          <img src="./img/Home.png" alt="Home" />
-        </Link>
-        <img src="./img/UpperLink.png" alt="ArrowRight" />
-        <Link to="/Phones">
-          <p>Phones</p>
-        </Link>
-        <img src="./img/UpperLink.png" alt="ArrowRight" />
-        <p>{selectedPhone?.name}</p>
+      <div className="top">
+        <div className="top-link" data-cy="breadCrumbs">
+          <Link to="/">
+            <img src="./img/Home.png" alt="Home" />
+          </Link>
+          <img src="./img/UpperLink.png" alt="ArrowRight" />
+          <Link to="/Phones">
+            <p>Phones</p>
+          </Link>
+          <img src="./img/UpperLink.png" alt="ArrowRight" />
+          <p>{selectedPhone?.name}</p>
+        </div>
+
+        <ButtonBack />
+
+        <h1>{selectedPhone?.name}</h1>
       </div>
-
-      <ButtonBack />
-
-      <h1>{selectedPhone?.name}</h1>
 
       <div className="ItemCard__properties">
         <div className="ItemCard__list">
@@ -193,7 +195,7 @@ export const ItemCard = () => {
                     className="favourites-img"
                   />
                 ) : (
-                  <img src="./img/heart.png" alt="Heart" />
+                  <img src="./img/heart.svg" alt="Heart" />
                 )}
               </button>
             </div>

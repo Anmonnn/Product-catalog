@@ -8,6 +8,8 @@ import { TypeCard } from '../../types/TypeCard';
 export const Favourites = () => {
   const [searchParams] = useSearchParams();
   const queryValue = searchParams.get('query') || '';
+  const itemWidth = useAppSelector(state => state.phones.itemWidth);
+  const count = useAppSelector(state => state.phones.count);
 
   const favouritesPhones = useAppSelector(
     state => state.favouritesPhones.favouritesPhones,
@@ -47,7 +49,10 @@ export const Favourites = () => {
       <p>{`${favourites.length} models`}</p>
 
       {favourites.length ? (
-        <ul className="Cards__list">
+        <ul
+          className="Cards__list"
+          style={{ gridTemplateColumns: `repeat(${count}, ${itemWidth}px)` }}
+        >
           {favourites.map(phone => (
             <li className="Cards__item" key={phone.name}>
               <ProductCard card={phone} />

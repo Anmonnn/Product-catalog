@@ -24,6 +24,8 @@ export const PhonesPage = () => {
   const queryValue: string = searchParams.get('query') || '';
   const sortValue: string = searchParams.get('sort') || '';
   const phones = useAppSelector(state => state.phones.items);
+  const itemWidth = useAppSelector(state => state.phones.itemWidth);
+  const count = useAppSelector(state => state.phones.count);
 
   const [perPage, setPerPage] = useState(searchParams.get('perPage') || 'All');
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
@@ -166,7 +168,11 @@ export const PhonesPage = () => {
 
       {actualPhones.length ? (
         <>
-          <ul className="Cards__list" data-cy="productList">
+          <ul
+            className="Cards__list"
+            data-cy="productList"
+            style={{ gridTemplateColumns: `repeat(${count}, ${itemWidth}px)` }}
+          >
             {(visibleItems.length > 0 ? visibleItems : actualPhones).map(
               phone => (
                 <li className="Cards__item" key={phone.name}>

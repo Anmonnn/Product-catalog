@@ -1,4 +1,6 @@
 .PhonesSlider {
+  display: flex;
+  flex-direction: column;
   h1 {
     margin-bottom: 24px;
   }
@@ -6,6 +8,10 @@
   .cardsContainer__list {
     display: flex;
     gap: 16px;
+  }
+
+  .cardsContainer {
+    overflow: hidden;
   }
 
   .top-container {

@@ -1,15 +1,18 @@
+@import '../../helpers/mixins.scss';
+
 .Pagination {
-  height: 32px;
   justify-content: center;
   margin-bottom: 80px;
 
   .page__list {
     display: flex;
+    flex-wrap: wrap;
     margin: 0 16px;
+    gap: 16px 16px;
   }
 
   .page__item {
-    margin-right: 8px;
+    height: 30px;
     border: 1px solid #E2E6E9;
     cursor: pointer;
 

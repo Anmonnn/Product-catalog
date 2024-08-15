@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable no-console */
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './HomePage.scss';
 import { useAppSelector } from '../../store';
 import {
-  imgWidth,
   mainUrl,
   scrollPositionLeft,
   scrollPositionRight,
@@ -15,10 +15,11 @@ import {
 } from '../../components/PhonesSlider/PhonesSlider';
 
 export const HomePage = () => {
+  const slider = useRef<HTMLDivElement>(null);
+  const sliderWidth: number = slider.current?.offsetWidth || 0;
+  const imgWidth = sliderWidth + 48;
   const phones = useAppSelector(state => state.phones.items);
-
   const [scrollImgPosition, setScrollImgPosition] = useState(0);
-
   const categoryImg = [
     {
       img: `./img/category/category-phones.png`,
@@ -53,7 +54,36 @@ export const HomePage = () => {
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [scrollImgPosition]);
+  }, [scrollImgPosition, imgWidth]);
+
+  const [startX, setStartX] = useState(0);
+  const [endX, setEndX] = useState(0);
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    const touch = event.touches[0];
+
+    setStartX(touch.clientX);
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    const touch = event.touches[0];
+
+    setEndX(touch.clientX);
+  };
+
+  const handleTouchResult = () => {
+    const diffX = startX - endX;
+
+    if (diffX > 0) {
+      if (!(scrollImgPosition < -imgWidth)) {
+        scrollPositionRight(setScrollImgPosition, scrollImgPosition, imgWidth);
+      }
+    } else if (diffX < 0) {
+      if (!(scrollImgPosition >= 0)) {
+        scrollPositionLeft(setScrollImgPosition, scrollImgPosition, imgWidth);
+      }
+    }
+  };
 
   return (
     <div className="Home-page">
@@ -76,11 +106,15 @@ export const HomePage = () => {
             <img src="./img/ArrowLeft.png" alt="ArrowLeft" />
           </button>
           <div
+            ref={slider}
             className="Slider__list"
             style={{
               transform: `translateX(${scrollImgPosition}px)`,
               transition: `transform ${1000}ms ease`,
             }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchEnd}
+            onTouchEnd={handleTouchResult}
           >
             <Link to="Phones">
               <img
@@ -145,27 +179,25 @@ export const HomePage = () => {
 
       <div data-cy="categoryLinksContainer" className="Category container">
         <h1>Shop by category</h1>
-        <div>
-          <ul data-cy="categoryLinksContainer">
-            {categoryImg.map(({ img, name, count, color, type }) => (
-              <li className="Category__item" key={name}>
-                <div
-                  className="Category__container"
-                  style={{ backgroundColor: `${color}` }}
-                >
-                  <Link to={type} className="Category__img-container">
-                    <img className="Category__img" src={img} alt={name} />
-                  </Link>
-                </div>
+        <ul data-cy="categoryLinksContainer" className="Category__list">
+          {categoryImg.map(({ img, name, count, color, type }) => (
+            <li className="Category__item" key={name}>
+              <div
+                className="Category__container"
+                style={{ backgroundColor: `${color}` }}
+              >
+                <Link to={type} className="Category__img-container">
+                  <img className="Category__img" src={img} alt={name} />
+                </Link>
+              </div>
 
-                <div className="Category__description">
-                  <h3 className="Category__name">{name}</h3>
-                  <p className="Category__count">{`${count} models`}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+              <div className="Category__description">
+                <h3 className="Category__name">{name}</h3>
+                <p className="Category__count">{`${count} models`}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <PhonesSlider type={Phones.New} />

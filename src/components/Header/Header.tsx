@@ -2,10 +2,12 @@ import React from 'react';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { getSearchWith } from '../../helpers/searchHelper';
+import { setMenuStatus } from '../../features/phonesSlice';
 
 export const Header = () => {
+  const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -14,6 +16,7 @@ export const Header = () => {
   );
 
   const cartPhones = useAppSelector(state => state.cartPhones.phonesInCart);
+  const isMenuOpen = useAppSelector(state => state.phones.isMenuOpen);
 
   const HeaderText = ['', 'Phones', 'Tablets', 'Accessories'];
 
@@ -105,7 +108,7 @@ export const Header = () => {
               active__line: location.pathname === `/${'Favorites'}`,
             })}
           />
-          <img src="./img/heart.png" alt="Favorites" />
+          <img src="./img/heart.svg" alt="Favorites" />
           {favouritesPhones.length > 0 && (
             <div className="circle">{favouritesPhones.length}</div>
           )}
@@ -116,7 +119,7 @@ export const Header = () => {
               active__line: location.pathname === `/${'Cart'}`,
             })}
           />
-          <img src="./img/bag.png" alt="Cart" />
+          <img src="./img/bag.svg" alt="Cart" />
           {cartPhones.length > 0 && (
             <div className="circle">
               {cartPhones.reduce(
@@ -127,6 +130,17 @@ export const Header = () => {
             </div>
           )}
         </NavLink>
+        <button
+          onClick={() => dispatch(setMenuStatus('none'))}
+          className="category category-menu"
+        >
+          <div
+            className={classNames({
+              active__line: isMenuOpen,
+            })}
+          />
+          <img src="./img/bag.svg" alt="Menu" />
+        </button>
       </div>
     </header>
   );

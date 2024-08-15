@@ -76,10 +76,18 @@
       background-color: #313237;
       color: #FFF;
 
+      &:hover {
+        border: 1px solid #FAFBFC
+      }
+
       &.active-button {
         background-color: #FAFBFC;
         border: 1px solid #E2E6E9;
         color: #27AE60;
+
+        &:hover {
+          border: 1px solid #313237
+        }
       }
     }
 
@@ -102,11 +110,6 @@
         &:hover {
           border: 1px solid #313237
         }
-      }
-
-      img {
-        width: 15.34px;
-        height: 13.55px;
       }
     }
   }

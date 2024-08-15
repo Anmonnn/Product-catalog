@@ -8,6 +8,9 @@ export interface T {
   items: TypeCard[];
   selectedPhone: ItemTypeCard | null;
   searchFilter: string;
+  count: number;
+  itemWidth: number;
+  isMenuOpen: boolean;
 }
 
 export const initialState: T = {
@@ -16,6 +19,9 @@ export const initialState: T = {
   items: [] as TypeCard[],
   selectedPhone: null,
   searchFilter: '',
+  count: 4,
+  itemWidth: 272,
+  isMenuOpen: false,
 };
 
 export const selectPhone = createAsyncThunk(
@@ -56,6 +62,24 @@ export const phonesSlice: Slice<T> = createSlice({
         searchFilter: action.payload,
       };
     },
+    setCount: (state, action) => {
+      return {
+        ...state,
+        count: action.payload,
+      };
+    },
+    setItemWidth: (state, action) => {
+      return {
+        ...state,
+        itemWidth: action.payload,
+      };
+    },
+    setMenuStatus: state => {
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+      };
+    },
   },
   extraReducers: builder => {
     /* eslint-disable no-param-reassign */
@@ -78,5 +102,6 @@ export const phonesSlice: Slice<T> = createSlice({
   },
 });
 
-export const { setSearchFilter } = phonesSlice.actions;
+export const { setSearchFilter, setCount, setItemWidth, setMenuStatus } =
+  phonesSlice.actions;
 export default phonesSlice.reducer;
