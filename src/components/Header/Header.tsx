@@ -139,7 +139,7 @@ export const Header = () => {
               active__line: isMenuOpen,
             })}
           />
-          <img src="./img/bag.svg" alt="Menu" />
+          <img src="./img/Menu.svg" alt="Menu" />
         </button>
       </div>
     </header>
