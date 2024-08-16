@@ -79,5 +79,3 @@ export const useItemWidthAndCount = () => {
 
   return { itemCard };
 };
-
-// Чому при оноволенні сторінки на HomePage, береться некоректне значення Count, а значення на 1 більше?
