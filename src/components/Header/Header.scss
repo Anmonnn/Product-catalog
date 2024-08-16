@@ -28,8 +28,17 @@
     height: 100%;
 
     .Logo {
-      margin-right: 64px;
+      margin-right: 48px;
       margin-left: 24px;
+
+      @include onTablet {
+        margin-right: 32px;
+      }
+
+      @include onPhone {
+        margin-right: 48px;
+        margin-left: 16px;
+      }
     }
 
     .navigation {
@@ -85,6 +94,14 @@
       text-decoration: none;
       color: #313237;
 
+      @include onTablet {
+        width: 100px;
+      }
+
+      @include onPhone {
+        width: 150px;
+      }
+
       &__button {
         border: none;
         background-color: white;
@@ -96,8 +113,15 @@
 
       &__input {
         border: none;
-        width: 600;
         font-size: 14px;
+
+        @include onTablet {
+          width: 45px;
+        }
+  
+        @include onPhone {
+          width: 45px;
+        }
 
         &:focus {
           outline: none;

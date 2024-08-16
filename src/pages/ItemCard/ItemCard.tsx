@@ -92,7 +92,7 @@ export const ItemCard = () => {
 
         <ButtonBack />
 
-        <h1>{selectedPhone?.name}</h1>
+        <h2>{selectedPhone?.name}</h2>
       </div>
 
       <div className="ItemCard__properties">
@@ -166,8 +166,8 @@ export const ItemCard = () => {
 
           <div className="ItemCard__buttons">
             <div className="ItemCard__price">
-              <h1>{selectedPhone.priceRegular}</h1>
-              <p>{selectedPhone.priceDiscount}</p>
+              <h2>{selectedPhone.priceDiscount}</h2>
+              <p>{selectedPhone.priceRegular}</p>
             </div>
 
             <div className="ItemCard__button">
@@ -229,10 +229,10 @@ export const ItemCard = () => {
 
       <div className="ItemCard__description">
         <div className="description" data-cy="productDescription">
-          <h2 className="description__Header">About</h2>
+          <h3 className="description__Header">About</h3>
           {selectedPhone.description.map(text => (
             <article className="description__article" key={text.title}>
-              <h3>{text.title}</h3>
+              <h4>{text.title}</h4>
               {text.text.map(element => (
                 <p key={element.length}>{element}</p>
               ))}
@@ -241,7 +241,7 @@ export const ItemCard = () => {
         </div>
 
         <article className="description">
-          <h2 className="description__Header">Tech specs</h2>
+          <h3 className="description__Header">Tech specs</h3>
           <div className="wrapper__characteristics">
             <div className="characteristics">
               <p>Screen</p>

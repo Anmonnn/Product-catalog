@@ -46,12 +46,12 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
         <div className="card__description__price">
           {newPhone ? (
             <>
-              <h2 className="price">{`$${card.price}`}</h2>
+              <h3 className="price">{`$${card.price}`}</h3>
               <p className="discount">{`$${card.fullPrice}`}</p>
             </>
           ) : (
             <>
-              <h2 className="price">{`$${card.fullPrice}`}</h2>
+              <h3 className="price">{`$${card.fullPrice}`}</h3>
             </>
           )}
         </div>

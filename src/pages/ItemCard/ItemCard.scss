@@ -10,6 +10,10 @@
   margin: 0 auto;
   max-width: 1136px;
 
+  @include onPhone {
+    margin: 0 16px;
+  }
+
   .wrapper__characteristics {
     margin-top: 32px;
     display: flex;
@@ -40,6 +44,12 @@
     @include onPhone {
       width: auto;
       max-width: 700px;
+    }
+
+    @include onTablet {
+      & .wrapper__characteristics {
+        margin: 0;
+      }
     }
 
     &__text {
@@ -78,6 +88,11 @@
     display: flex;
     gap: 8px;
     align-items: center;
+
+    & p {
+      font-size: 22px;
+      text-decoration: line-through;
+    }
   }
 
   &__properties {
@@ -258,7 +273,8 @@
   }
 
   .top {
-    align-self: flex-start; /* Выравнивание первого элемента по началу */
+    align-self: flex-start;
+    /* Выравнивание первого элемента по началу */
 
     &-link {
       display: flex;

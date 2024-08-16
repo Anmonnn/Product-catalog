@@ -56,10 +56,13 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
     }
   };
 
+  // eslint-disable-next-line no-console
+  console.log(count);
+
   return (
     <div className="PhonesSlider container">
       <div className="top-container">
-        <h1>{type}</h1>
+        <h2>{type}</h2>
 
         <div className="top-container__movement">
           <button

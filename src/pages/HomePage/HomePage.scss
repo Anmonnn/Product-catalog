@@ -11,23 +11,51 @@
   place-items: center;
   overflow: hidden;
 
-  & h1 {
+  & h2 {
     margin-bottom: 24px;
   }
 }
 
 .container {
   margin-bottom: 80px;
-  overflow: hidden;
+  // overflow: hidden;
+
+  &:first-child {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    width: 1136px;
+
+    @include onTablet {
+      width: 586px;
+    }
+  
+    @include onPhone {
+      width: auto;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onPhone {
+    margin-bottom: 56px;
+  }
 }
 
 .Slider {
-  margin: 40px 0 82px;
+  // margin: 56px 0 82px;
+
+  // @include onTablet {
+  //   margin: 32px 0 64px;
+  // }
 
   @include onPhone {
     width: 100vw;
     height: 100vw;
-    margin: 0 0 82px;
+    // margin: 24 0 56px;
   }
 
   &__main {

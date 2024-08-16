@@ -71,7 +71,7 @@ export const CartsCard: React.FC<T> = ({ phone }) => {
             </button>
           </div>
 
-          <h2 className="phones__price">{`$${phone.price}`}</h2>
+          <h3 className="phones__price">{`$${phone.price}`}</h3>
         </div>
       </li>
     </>

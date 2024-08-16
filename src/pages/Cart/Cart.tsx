@@ -29,11 +29,11 @@ export const Cart = () => {
             </ul>
 
             <div className="phones-price">
-              <h1 data-cy="productQauntity">
+              <h2 data-cy="productQauntity">
                 {`$${cart.reduce((accumulator: number, value: TypeCard) => {
                   return accumulator + value.price * value.countToSell;
                 }, 0)}`}
-              </h1>
+              </h2>
               <p>{`Total for ${cart.length} items`}</p>
 
               <div className="button__container">

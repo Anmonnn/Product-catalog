@@ -87,7 +87,9 @@ export const HomePage = () => {
 
   return (
     <div className="Home-page">
-      <div className="Slider">
+      <h1 className="container">Welcome to Nice Gadgets store!</h1>
+
+      <div className="Slider container">
         <div className="Slider__main">
           <button
             type="button"
@@ -175,10 +177,10 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <PhonesSlider type={Phones.Discount} />
+      <PhonesSlider type={Phones.New} />
 
       <div data-cy="categoryLinksContainer" className="Category container">
-        <h1>Shop by category</h1>
+        <h2>Shop by category</h2>
         <ul data-cy="categoryLinksContainer" className="Category__list">
           {categoryImg.map(({ img, name, count, color, type }) => (
             <li className="Category__item" key={name}>
@@ -192,7 +194,7 @@ export const HomePage = () => {
               </div>
 
               <div className="Category__description">
-                <h3 className="Category__name">{name}</h3>
+                <h4 className="Category__name">{name}</h4>
                 <p className="Category__count">{`${count} models`}</p>
               </div>
             </li>
@@ -200,7 +202,7 @@ export const HomePage = () => {
         </ul>
       </div>
 
-      <PhonesSlider type={Phones.New} />
+      <PhonesSlider type={Phones.Discount} />
     </div>
   );
 };
